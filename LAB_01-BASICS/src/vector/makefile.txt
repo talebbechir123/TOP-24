@@ -1,0 +1,15 @@
+
+
+all: vector1
+
+vector.o: vector.c vector.h
+	gcc -arch x86_64 -Wall -g3 -O2 -c vector.c
+
+compute.o: compute.c compute.h vector.o
+	gcc -arch x86_64 -Wall -g3 -O2 -c compute.c 
+	
+vector1: main.c  compute.o 
+	gcc -arch x86_64 -Wall -g3 -O2 -o vector1 main.c  compute.o vector.o
+
+clean:
+	rm -Rf  vector1 *.o *.dSYM *~

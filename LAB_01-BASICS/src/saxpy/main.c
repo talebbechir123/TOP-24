@@ -13,16 +13,16 @@ void saxpy(int* res, int const* x, int const* y, int a, int size) {
     }
 }
 
-int main(int argc, char* argv[argc + 1]) {
+int main(void) {
     int size = 100;
     int *res, *x, *y;
     int a = 2;
 
     res = malloc(sizeof(int) * size);
     y = malloc(sizeof(int) * size);
+    x = malloc(sizeof(int) * size);
 
     for (int i = 0; i < size; ++i) {
-        x = malloc(sizeof(int) * size);
         x[i] = 50 + i;
         y[i] = i;
     }
@@ -32,6 +32,10 @@ int main(int argc, char* argv[argc + 1]) {
         printf("res[%d] = %d ; ", i, res[i]);
         if ((i + 1) % 10 == 0) { printf("\n"); }
     }
+   
+    free(res);
+    free(y);
+    free(x);
 
     return 1;
 }
